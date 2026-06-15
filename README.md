@@ -49,21 +49,21 @@ me.say_hi()
 
 ---
 
-## ðŸ› ï¸ Tech Stack
+## Tech Stack
 
 <div align="center">
 
-### ðŸ’» Languages
+## Languages
 <p>
   <img src="https://skillicons.dev/icons?i=python,js,html,css&theme=dark" />
 </p>
 
-### âš¡ Frameworks & Libraries
+## Frameworks & Libraries
 <p>
   <img src="https://skillicons.dev/icons?i=react,nodejs,flask,express&theme=dark" />
 </p>
 
-### ðŸ—„ï¸ Databases & Tools
+##  Databases & Tools
 <p>
   <img src="https://skillicons.dev/icons?i=mysql,mongodb,git,github,vscode,linux&theme=dark" />
 </p>
@@ -72,7 +72,7 @@ me.say_hi()
 
 ---
 
-## ðŸ“Š GitHub Stats
+##  GitHub Stats
 
 <div align="center">
 
@@ -87,7 +87,7 @@ me.say_hi()
 
 ---
 
-## ðŸ† GitHub Trophies
+##  GitHub Trophies
 
 <div align="center">
   <img src="https://github-profile-trophy.vercel.app/?username=kurubarakeshkumar&theme=tokyonight&no-frame=true&no-bg=false&margin-w=8&column=7" />
@@ -95,7 +95,7 @@ me.say_hi()
 
 ---
 
-## ðŸš€ Featured Projects
+## Featured Projects
 
 <div align="center">
 
@@ -117,7 +117,7 @@ me.say_hi()
 
 ---
 
-## ðŸ“ˆ Contribution Graph
+##  Contribution Graph
 
 <div align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=kurubarakeshkumar&bg_color=1a1b27&color=70a5fd&line=bf91f3&point=38bdae&area=true&area_color=70a5fd&hide_border=true" width="95%"/>
@@ -125,7 +125,7 @@ me.say_hi()
 
 ---
 
-## ðŸ’¡ Dev Quote of the Day
+##  Dev Quote of the Day
 
 <div align="center">
   <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" width="80%" />
@@ -135,7 +135,7 @@ me.say_hi()
 
 <div align="center">
 
-### ðŸ¤ Let's Connect & Collaborate!
+## Let's Connect & Collaborate!
 
 <p>
   <a href="https://github.com/kurubarakeshkumar">
