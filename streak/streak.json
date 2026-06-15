@@ -1,0 +1,15 @@
+{
+    "current_streak":  1,
+    "total_days_active":  1,
+    "streak_start_date":  "2026-06-15",
+    "last_activity_date":  "2026-06-15",
+    "username":  "kurubarakeshkumar",
+    "longest_streak":  1,
+    "history":  [
+                    {
+                        "date":  "2026-06-15",
+                        "committed":  "True",
+                        "type":  "auto"
+                    }
+                ]
+}
