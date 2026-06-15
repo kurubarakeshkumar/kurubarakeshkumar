@@ -28,7 +28,7 @@
 
 ---
 
-## ðŸ™‹â€â™‚ï¸ About Me
+## About Me
 
 ```python
 class RakeshKumar:
