@@ -1,0 +1,42 @@
+name: 🔥 Daily Streak Keeper
+
+on:
+  schedule:
+    # 11:45 PM IST = 18:15 UTC daily
+    - cron: '15 18 * * *'
+  workflow_dispatch: # allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  keep-streak:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests pytz
+
+      - name: Run streak updater
+        run: python scripts/update_streak.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: kurubarakeshkumar
+
+      - name: Commit and push streak update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add streak/streak.json streak/history.csv README.md
+          git diff --cached --quiet || git commit -m "chore: daily streak update [skip ci]"
+          git push
