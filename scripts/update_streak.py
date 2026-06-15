@@ -12,7 +12,7 @@ import requests
 from datetime import datetime, timedelta
 import pytz
 
-# â”€â”€ Config â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Config ──────────────────────────────────────────────────────────────────
 USERNAME   = os.environ.get("GITHUB_USERNAME", "kurubarakeshkumar")
 TOKEN      = os.environ.get("GITHUB_TOKEN", "")
 IST        = pytz.timezone("Asia/Kolkata")
@@ -26,7 +26,7 @@ HEADERS = {
     "Accept": "application/vnd.github+json"
 }
 
-# â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Helpers ──────────────────────────────────────────────────────────────────
 def load_streak():
     if os.path.exists(STREAK_FILE):
         with open(STREAK_FILE) as f:
@@ -45,7 +45,7 @@ def save_streak(data):
     os.makedirs("streak", exist_ok=True)
     with open(STREAK_FILE, "w") as f:
         json.dump(data, f, indent=2)
-    print(f"âœ… streak.json saved â€” Current streak: {data['current_streak']} days")
+    print(f"✅ streak.json saved — Current streak: {data['current_streak']} days")
 
 def append_history(date, committed, commit_type):
     os.makedirs("streak", exist_ok=True)
@@ -61,7 +61,7 @@ def append_history(date, committed, commit_type):
         writer = csv.DictWriter(f, fieldnames=["date", "committed", "type"])
         writer.writeheader()
         writer.writerows(rows)
-    print(f"âœ… history.csv updated ({len(rows)} entries)")
+    print(f"✅ history.csv updated ({len(rows)} entries)")
 
 def check_manual_activity():
     """Check if the user already committed manually today (IST)."""
@@ -75,7 +75,7 @@ def check_manual_activity():
                 if created == TODAY:
                     return True
     except Exception as e:
-        print(f"âš ï¸  Could not check events: {e}")
+        print(f"⚠️  Could not check events: {e}")
     return False
 
 def update_readme(streak_data):
@@ -86,13 +86,13 @@ def update_readme(streak_data):
         content = f.read()
 
     streak_block = f"""<!-- STREAK_START -->
-## ðŸ”¥ Streak Stats
+## 🔥 Streak Stats
 
-| ðŸ”¥ Current Streak | ðŸ† Longest Streak | ðŸ“… Streak Since | âœ… Total Days Active |
+| 🔥 Current Streak | 🏆 Longest Streak | 📅 Streak Since | ✅ Total Days Active |
 |:---:|:---:|:---:|:---:|
 | **{streak_data['current_streak']} days** | **{streak_data['longest_streak']} days** | {streak_data['streak_start_date']} | {streak_data['total_days_active']} days |
 
-> ðŸ¤– Auto-updated daily at 11:45 PM IST &nbsp;â€¢&nbsp; Last check-in: `{TODAY}`
+> 🤖 Auto-updated daily at 11:45 PM IST &nbsp;•&nbsp; Last check-in: `{TODAY}`
 <!-- STREAK_END -->"""
 
     if "<!-- STREAK_START -->" in content and "<!-- STREAK_END -->" in content:
@@ -106,17 +106,17 @@ def update_readme(streak_data):
     else:
         # Append before the footer wave
         content = content.replace(
-            "---\n\n<div align=\"center\">\n\n### ðŸ¤ Let's Connect",
-            f"---\n\n{streak_block}\n\n---\n\n<div align=\"center\">\n\n### ðŸ¤ Let's Connect"
+            "---\n\n<div align=\"center\">\n\n### 🤝 Let's Connect",
+            f"---\n\n{streak_block}\n\n---\n\n<div align=\"center\">\n\n### 🤝 Let's Connect"
         )
 
     with open(README_FILE, "w") as f:
         f.write(content)
-    print("âœ… README.md streak section updated")
+    print("✅ README.md streak section updated")
 
-# â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Main ─────────────────────────────────────────────────────────────────────
 def main():
-    print(f"ðŸ—“ï¸  Running streak updater for {TODAY} (IST)")
+    print(f"🗓️  Running streak updater for {TODAY} (IST)")
     data = load_streak()
 
     last = data.get("last_activity_date")
@@ -125,11 +125,11 @@ def main():
     # Determine commit type
     had_manual = check_manual_activity()
     commit_type = "manual" if had_manual else "auto"
-    print(f"ðŸ“‹ Manual activity today: {had_manual}")
+    print(f"📋 Manual activity today: {had_manual}")
 
     # Update streak logic
     if last == TODAY:
-        print("â„¹ï¸  Already recorded today. Skipping streak increment.")
+        print("ℹ️  Already recorded today. Skipping streak increment.")
     elif last == yesterday or last is None:
         # Continuing streak
         data["current_streak"] += 1
@@ -137,10 +137,10 @@ def main():
         data["last_activity_date"] = TODAY
         if data["current_streak"] > data["longest_streak"]:
             data["longest_streak"] = data["current_streak"]
-        print(f"ðŸ”¥ Streak extended to {data['current_streak']} days!")
+        print(f"🔥 Streak extended to {data['current_streak']} days!")
     else:
-        # Streak broken â€” reset
-        print(f"ðŸ’” Streak broken! Last activity was {last}. Resetting.")
+        # Streak broken — reset
+        print(f"💔 Streak broken! Last activity was {last}. Resetting.")
         data["current_streak"] = 1
         data["total_days_active"] += 1
         data["last_activity_date"] = TODAY
@@ -150,7 +150,7 @@ def main():
     save_streak(data)
     append_history(TODAY, True, commit_type)
     update_readme(data)
-    print("ðŸš€ All done!")
+    print("🚀 All done!")
 
 if __name__ == "__main__":
     main()
